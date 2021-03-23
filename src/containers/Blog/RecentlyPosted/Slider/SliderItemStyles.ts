@@ -8,7 +8,7 @@ type Props = {
   className: string;
   onMouseOver: () => void;
   onMouseOut: () => void;
-  children: ReactNode;
+  children?: ReactNode;
 };
 
 export const StyledSliderItem = styled.div<Props>`
