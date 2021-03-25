@@ -1,21 +1,57 @@
+/* eslint-disable import/order */
+/* eslint-disable sort-keys */
 /* eslint-disable react/jsx-props-no-spreading */
 import React, {FC} from 'react';
 import {Article as ArticleType} from 'types/blogs';
 import Article from './Article';
-import Slider from './Slider';
 import './RecentlyPosted.scss';
+
+import Slider from 'react-slick';
+
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 interface ArticlesProps {
   articles: ArticleType[];
 }
-const sliderProps = {
-  maxVisibleSlides: 3,
-  pageTransition: 850,
-  slideMargin: 5,
-  zoomFactor: 1,
-};
 
 const RecentlyPosted: FC<ArticlesProps> = ({articles}) => {
+  const settings = {
+    dots: true,
+    infinite: false,
+    draggable: false,
+    speed: 600,
+    slidesToShow: 4,
+    slidesToScroll: 4,
+    initialSlide: 0,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: false,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          dots: false,
+        },
+      },
+    ],
+  };
   return (
     <div className="RecentlyPosted">
       <div className="RecentlyPosted__content-container">
@@ -23,7 +59,7 @@ const RecentlyPosted: FC<ArticlesProps> = ({articles}) => {
         <div className="RecentlyPosted__article">
           {/* eslint-disable-next-line react/jsx-props-no-spreading */}
           <div className="RecentlyPosted__slider-container">
-            <Slider {...sliderProps}>
+            <Slider {...settings}>
               {articles.map((article) => (
                 <Article key={article.title} article={article} />
               ))}
