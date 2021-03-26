@@ -1,11 +1,12 @@
+/* eslint-disable import/order */
 /* eslint-disable sort-keys */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react/jsx-props-no-spreading */
 import React, {FC} from 'react';
 import {Article as ArticleType} from 'types/blogs';
-import Slider from 'react-slick';
 import Article from './Article';
 import './RecentlyPosted.scss';
+
+import Slider from 'react-slick';
 
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
