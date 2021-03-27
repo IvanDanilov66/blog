@@ -4,105 +4,96 @@ $slideMargin: 5;
 $zoomFactor: 1;
 $transformValue: -0.5%;
 
-
 .SliderWrapper {
-    overflow: hidden;
-    // padding: ( ($zoomFactor / $visibleSlides) * 0.7%) 0;
+  overflow: hidden;
 
-
-    &__Slider {
-        display: flex;
-        transition: transform ($pageTransition)ms ease;
-        
-        &__SliderItem:hover  {
-          transform: translateX($transformValue);
-        }
+  &__Slider {
+    display: flex;
+    transition: transform ($pageTransition) ms ease;
+    &__SliderItem:hover {
+      transform: translateX($transformValue);
     }
+  }
 
-    &__SliderItem {
-        // SlideMargin
-          margin: 0 5px;
-          transition: transform 500ms ease;
-          border-radius: 20px;
-          cursor: pointer;
-          width: 100%;
-          height: 100%;
-          box-sizing: border-box;
-          display: flex;
-          transform: scale(1);
-          user-select: none;
-          position: relative;
-        //   flex: 0 0 calc(100% / $visibleSlides - $slideMargin * 2px);
-          @media (min-width: 480px) and (max-width: 768px) {
-            margin: 0 5px;
-          }
-          img {
-            height: 100%;
-            width: 100%;
-            border-radius: 1.5vw;
-            box-sizing: border-box;
-          }
-
-        //   zoomFactor Prop
-          :hover {
-            transform: scale(calc( 1 / 100 + 1) ) !important;
-            transition: .5s;
-          }
-          :hover ~ * {
-            transform: translateX(1 / 2%) !important;
-          }
-          &.left {
-            transform-origin: left;
-            :hover ~ * {
-              transform: translateX(1%) !important;
-            }
-          }
-          &.right {
-            transform-origin: right;
-            :hover ~ * {
-              transform: translateX(0%) !important;
-            }
-          }
+  &__SliderItem {
+    border-radius: 20px;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: flex;
+    height: 100%;
+    margin: 0 5px;
+    position: relative;
+    transform: scale(1);
+    transition: transform 500ms ease;
+    user-select: none;
+    width: 100%;
+    @media (min-width: 480px) and (max-width: 768px) {
+      margin: 0 5px;
     }
+    img {
+      border-radius: 1.5vw;
+      box-sizing: border-box;
+      height: 100%;
+      width: 100%;
+    }
+    :hover {
+      transform: scale(calc(1 / 100 + 1));
+      transition: 0.5s;
+    }
+    :hover ~ * {
+      transform: translateX(1 / 2%);
+    }
+    &.left {
+      transform-origin: left;
+      :hover ~ * {
+        transform: translateX(1%);
+      }
+    }
+    &.right {
+      transform-origin: right;
+      :hover ~ * {
+        transform: translateX(0%);
+      }
+    }
+  }
 
-    .button-wrapper {
-        box-sizing: border-box;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        width: 55px;
-        padding: 1/7% 0; //zoomFactor = 1
-      }
+  .button-wrapper {
+    box-sizing: border-box;
+    height: 100%;
+    padding: 1/7% 0;
+    position: absolute;
+    top: 0;
+    width: 55px;
+  }
 
-    .button {
-        background: transparent;
-        border: 0;
-        cursor: pointer;
-        display: block;
-        font-size: 3rem;
-        font-weight: 800;
-        height: 65%;
-        outline: none;
-        top: 0;
-        transition: all 0.7s;
-        user-select: none;
-        width: 100%;
-        
-        &:hover {
-          opacity: 0.5;
-        }
-      }
-      .back {
-        border-radius: 0 1.5vw 1.5vw 0;
-        left: 25px;
-        top: -20px;
-        @media (max-width: 768px) {
-          left: 5px;
-        }
-      }
-      .forward {
-        border-radius: 1.5vw 0 0 1.5vw;
-        right: 25px;
-        top: -20px;
-      }
+  .button {
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    display: block;
+    font-size: 3rem;
+    font-weight: 800;
+    height: 65%;
+    outline: none;
+    top: 0;
+    transition: all 0.7s;
+    user-select: none;
+    width: 100%;
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+  .back {
+    border-radius: 0 1.5vw 1.5vw 0;
+    left: 25px;
+    top: -20px;
+    @media (max-width: 768px) {
+      left: 5px;
+    }
+  }
+  .forward {
+    border-radius: 1.5vw 0 0 1.5vw;
+    right: 25px;
+    top: -20px;
+  }
 }
